@@ -1,9 +1,9 @@
 # syntax=docker/dockerfile:1
 
-ARG QBITTORRENT_VERSION=5.1.4
-ARG LIBTORRENT_VERSION=2.0.11
+ARG QBITTORRENT_VERSION=5.3.0beta1
+ARG LIBTORRENT_VERSION=2.0.14
 
-ARG ALPINE_VERSION=3.22
+ARG ALPINE_VERSION=3.23
 ARG XX_VERSION=1.9.0
 
 FROM tianon/gosu:latest AS gosu
@@ -82,7 +82,10 @@ RUN apk --update --no-cache add \
     shadow \
     tzdata \
     unzip \
-    zlib
+    zlib \
+    sqlite \
+    sqlite-dev \
+    qt6-qtbase-sqlite
 
 ENV QBITTORRENT_HOME="/home/qbittorrent" \
   TZ="UTC" \
