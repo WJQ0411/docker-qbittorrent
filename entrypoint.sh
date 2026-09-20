@@ -37,6 +37,11 @@ if [ ! -e "${QBITTORRENT_HOME}/.local/share/qBittorrent" ]; then
   ln -s /data/data "${QBITTORRENT_HOME}/.local/share/qBittorrent"
 fi
 
+if [ -e "${QBITTORRENT_HOME}/qBittorrent/lockfile" ]; then
+  echo "Removing historical lockfile..."
+  rm -f "${QBITTORRENT_HOME}/qBittorrent/lockfile"
+fi
+
 # https://github.com/qbittorrent/qBittorrent/blob/master/src/base/settingsstorage.cpp
 if [ ! -f /data/config/qBittorrent.conf ]; then
   echo "Initializing qBittorrent configuration..."
